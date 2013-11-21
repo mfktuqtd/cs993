@@ -8,6 +8,7 @@ class Account < ActiveRecord::Base
   validates_length_of       :password, :within => 4..40, :if => :password_required
   validates_confirmation_of :password,                   :if => :password_required
   validates_format_of       :role,     :with => /[A-Za-z]/
+  validates_uniqueness_of   :name
 
   # Callbacks
   before_save :encrypt_password, :if => :password_required
