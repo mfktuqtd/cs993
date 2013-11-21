@@ -16,7 +16,8 @@ gem 'rake'
 # Component requirements
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'slim'
-gem 'activerecord', '>= 3.1', :require => 'active_record'
+#gem 'activerecord', '>= 3.1', :require => 'active_record'
+gem 'activerecord', '3.2.15', :require => 'active_record'
 gem 'mysql2'
 
 # Test requirements
@@ -34,3 +35,6 @@ gem 'padrino', '0.11.4'
 gem 'haml'
 
 gem 'unicorn'
+
+#face detection
+gem "opencv", :git => "https://github.com/pcting/ruby-opencv"
