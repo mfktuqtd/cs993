@@ -1,0 +1,24 @@
+-# coding: utf-8
+- error = @account.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '姓名', :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'input-xlarge input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : '名称需和通讯录中保持一致'
+- error = @account.errors.include?(:password)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '请输入密码', :class => 'control-label'
+  .controls
+    =f.password_field :password, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:password, :class => 'text-error') : '最小4位长度'
+- error = @account.errors.include?(:password_confirmation)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '请确认密码', :class => 'control-label'
+  .controls
+    =f.password_field :password_confirmation, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:password_confirmation, :class => 'text-error') : '重复刚才的密码'
+
+.form-actions
+  =f.submit '确认', :class => 'btn btn-primary'
+  &nbsp;
+  =link_to '取消', "/", :class => 'btn'

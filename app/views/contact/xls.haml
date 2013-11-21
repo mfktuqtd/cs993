@@ -1,0 +1,48 @@
+!!! XML
+<?mso-application progid="Excel.Sheet"?>
+%Workbook{:xmlns => "urn:schemas-microsoft-com:office:spreadsheet", "xmlns:html" => "http://www.w3.org/TR/REC-html40", "xmlns:o" => "urn:schemas-microsoft-com:office:office", "xmlns:ss" => "urn:schemas-microsoft-com:office:spreadsheet", "xmlns:x" => "urn:schemas-microsoft-com:office:excel"}
+  %Worksheet{"ss:Name" => "通讯录"}
+    %Table
+      %Row
+        %Cell
+          %Data{"ss:Type" => "String"} 姓名
+        %Cell
+          %Data{"ss:Type" => "String"} 电话
+        %Cell
+          %Data{"ss:Type" => "String"} 工作单位
+        %Cell
+          %Data{"ss:Type" => "String"} 城市
+        %Cell
+          %Data{"ss:Type" => "String"} 地址
+        %Cell
+          %Data{"ss:Type" => "String"} 邮编
+        %Cell
+          %Data{"ss:Type" => "String"} QQ
+        %Cell
+          %Data{"ss:Type" => "String"} eMail
+        %Cell
+          %Data{"ss:Type" => "String"} 微信
+        %Cell
+          %Data{"ss:Type" => "String"} 微博
+      - @items.each do |item|
+        %Row
+          %Cell
+            %Data{"ss:Type" => "String"}= item.name
+          %Cell
+            %Data{"ss:Type" => "String"}= item.phone
+          %Cell
+            %Data{"ss:Type" => "String"}= item.company
+          %Cell
+            %Data{"ss:Type" => "String"}= item.city
+          %Cell
+            %Data{"ss:Type" => "String"}= item.address
+          %Cell
+            %Data{"ss:Type" => "String"}= item.post
+          %Cell
+            %Data{"ss:Type" => "String"}= item.qq
+          %Cell
+            %Data{"ss:Type" => "String"}= item.email
+          %Cell
+            %Data{"ss:Type" => "String"}= item.weixin
+          %Cell
+            %Data{"ss:Type" => "String"}= item.weibo

@@ -1,0 +1,10 @@
+-# coding: utf-8
+= partial('/contact/list')
+.row
+  .spn4.offset4
+    - if logged_in? && (current_account.role == 'visitor')
+      %span.label.label-important 提交个人信息，请先注册成为正式用户
+      %a{:href => '/register'} 注册
+    - if logged_in? && (current_account.role == 'user')
+      %a.btn{:href => '/contact/new'}新建
+      = link_to '导出Excel', url(:contact, :index, :format => :xls)

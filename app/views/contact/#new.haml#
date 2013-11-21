@@ -1,0 +1,2 @@
+-form_for :contact, url(:contact, :create), :class => 'form-horizontal' do |f|
+  =partial 'contact/form', :locals => { :f => f }

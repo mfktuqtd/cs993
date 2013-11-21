@@ -1,0 +1,47 @@
+-# coding: utf-8
+.row
+  .span4.offset4
+    %span{:class => "label label-info"}
+      = "计算机993班级共49人，已有#{@items.count}位同学加入通讯录"
+%table{:class => "table table-hover"}
+  %thead
+    %tr
+      %th姓名
+      %th电话
+      %th工作单位
+      %th城市
+      %th地址
+      %th邮编
+      %th QQ
+      %th eMail
+      %th微信
+      %th微博
+  %tbody
+    - if @items
+      - @items.each do |item|
+        %tr
+          %td.span1
+            = item.name
+          %td.span1 
+            = item.phone
+          %td.span1
+            = item.company
+          %td.span1
+            = item.city
+          %td.span2
+            = item.address
+          %td.span1
+            = item.post
+          %td.span1
+            = item.qq
+          %td.span1
+            = item.email
+          %td.span1
+            = item.weixin
+          %td.span1
+            = item.weibo
+          - if current_account.name == item.name
+            %td.span1
+              %a{:href => "/contact/edit?id=#{item.id}"}编辑
+              = link_to "删除", url(:contact, :delete, :id => item.id, :format => :js), :confirm => "确认删除?"
+

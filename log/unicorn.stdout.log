@@ -1,0 +1,4 @@
+login params: {"authenticity_token"=>"8cf9f5626c774cbf41dbcfbb55a165ef", "name"=>"cs993", "password"=>"cs993"}
+login params: {"authenticity_token"=>"bd32c84c2cb8fce4c31100a6316e4f1f", "name"=>"", "password"=>""}
+login params: {"authenticity_token"=>"bd32c84c2cb8fce4c31100a6316e4f1f", "name"=>"cs993", "password"=>"cs993"}
+login params: {"authenticity_token"=>"bd32c84c2cb8fce4c31100a6316e4f1f", "name"=>"cs993", "password"=>"cs993"}

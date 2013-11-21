@@ -1,0 +1,65 @@
+-# coding: utf-8
+- error = @contact.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '姓名', :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'input-xlarge input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : '这个必须填'
+- error = @contact.errors.include?(:phone)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '电话', :class => 'control-label'
+  .controls
+    =f.text_field :phone, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:phone, :class => 'text-error') : '居然没有电话？'
+- error = @contact.errors.include?(:company)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '工作单位', :class => 'control-label'
+  .controls
+    =f.text_field :company, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:company, :class => 'text-error') : '自己开的公司，也把名字写上吧'
+- error = @contact.errors.include?(:city)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '城市', :class => 'control-label'
+  .controls
+    =f.text_field :city, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:city, :class => 'text-error') : '告诉我们你在哪儿！'
+- error = @contact.errors.include?(:address)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '地址', :class => 'control-label'
+  .controls
+    =f.text_field :address, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:address, :class => 'text-error') : '随便填'
+- error = @contact.errors.include?(:post)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '邮编', :class => 'control-label'
+  .controls
+    =f.text_field :post, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:post, :class => 'text-error') : '这个可以没有'
+- error = @contact.errors.include?(:qq)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label 'QQ', :class => 'control-label'
+  .controls
+    =f.text_field :qq, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:qq, :class => 'text-error') : '没有不是人啊！！！'
+- error = @contact.errors.include?(:email)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label 'EMail', :class => 'control-label'
+  .controls
+    =f.text_field :email, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:email, :class => 'text-error') : '给个常用的就好'
+- error = @contact.errors.include?(:weixin)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '微信', :class => 'control-label'
+  .controls
+    =f.text_field :weixin, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weixin, :class => 'text-error') : '搞暧昧的必须有'
+- error = @contact.errors.include?(:weibo)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '微博', :class => 'control-label'
+  .controls
+    =f.text_field :weibo, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:weibo, :class => 'text-error') : '应该都有吧'
+.form-actions
+  =f.submit '保存', :class => 'btn btn-primary'
+  &nbsp;
+  =link_to '取消', "/", :class => 'btn'

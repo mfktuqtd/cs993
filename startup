@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    echo "start server"
+    #start server
+    #padrino start -h="0.0.0.0" -e production
+    #start with corn
+    #unicorn -c ./config/unicorn.conf.rb -E production -D -l 0.0.0.0:3003
+    bundle exec unicorn -c ./config/unicorn.conf.rb -E production -D -l 0.0.0.0:3002
+    echo "unicorn started"
+else
+    echo "stop server"
+    #padrino stop
+    #stop unicorn
+    ps aux | grep ':3002' | awk '{print $2}' | xargs kill -9 
+
+    #clear all logs
+    rm -rf ./log/*
+    rm -f ./nohup.out
+fi
