@@ -37,4 +37,4 @@ gem 'haml'
 gem 'unicorn'
 
 #face detection
-gem "opencv", :git => "https://github.com/pcting/ruby-opencv"
+gem 'ruby-opencv'

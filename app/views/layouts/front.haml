@@ -9,7 +9,6 @@
     %meta{:content => "", :name => "993班"}
     %meta{:content => "", :name => "pengke"}
     = stylesheet_link_tag 'bootstrap', 'bootstrap-responsive'
-    = stylesheet_link_tag 'datetimepicker'
     %script{:src => "http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"}
     :css
       body {
@@ -30,8 +29,8 @@
             %ul.nav
               %li{:class => ('active' if @section == 'contact')}
                 %a{:href => "/contact/index"}通讯录
-              %li{:class => ('active' if @section == 'picture')}
-                %a{:href => "/picuture"}照片墙
+              %li{:class => ('active' if @section == 'photo')}
+                %a{:href => "/photo"}照片墙
               %li.last
                 %a{:href => "#"}联系我们
             - if logged_in?
@@ -41,8 +40,8 @@
             - else
               %a.btn{:href => '/register'} 注册
 
-    .container    
+    .container
       = yield
       %footer
         %p &copy; Company 2013
-    = javascript_include_tag 'bootstrap', 'jquery', 'jquery-ujs', 'application'
+    = javascript_include_tag 'bootstrap.min', 'application'

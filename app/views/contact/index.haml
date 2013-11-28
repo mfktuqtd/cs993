@@ -7,4 +7,4 @@
       %a{:href => '/register'} 注册
     - if logged_in? && (current_account.role == 'user')
       %a.btn{:href => '/contact/new'}新建
-      = link_to '导出Excel', url(:contact, :index, :format => :xls)
+      = link_to '导出Excel', url(:contact, :download, :format => :xls)
