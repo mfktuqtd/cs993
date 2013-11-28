@@ -1,0 +1,32 @@
+%select.image-picker.show-labels{:multiple => "multiple"}
+  %option{"data-img-src" => image_path("faces/face1.png"), :value => "face1"}face1
+  %option{"data-img-src" => image_path("faces/face2.png"), :value => "face2"}face2
+  %option{"data-img-src" => image_path("faces/face3.png"), :value => "face3"}face3
+  %option{"data-img-src" => image_path("faces/face4.png"), :value => "face4"}face4
+
+.row
+  %ul.thumbnails.image_picker_selector
+    %li.span3
+      .thumbnail
+        %image{:src => image_path("faces/face1.png"), :style => "width: 260px; height: 180px;", "data-src" => "holder.js/260*180", :alt => "260*180"}
+    %li.span3
+      .thumbnail
+        = image_tag(image_path("faces/face2.png"), :width => "100", "max-height" => "100%")
+    %li.span3
+      .thumbnail
+        = image_tag(image_path("faces/face3.png"), :width => "100", "max-height" => "100%")
+    %li.span3
+      .thumbnail
+        = image_tag(image_path("faces/face4.png"), :width => "100", "max-height" => "100%")
+
+
+#photowall.thumbnails
+  - @items.each do |item|
+    .item.thumbnail
+      = image_tag(image_path(item.img_path))
+
+
+%select.image-picker.show-labels.masonry{:name => "selected_wall_photo"}
+  %option
+  - @items.each do |item|
+    %option{"data-img-src" => image_path(item.img_path), :value => item.img_path}=item.img_path

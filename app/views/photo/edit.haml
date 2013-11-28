@@ -1,0 +1,4 @@
+- if @face
+  = image_tag(image_path(File.join("faces", @face.file_name)))
+-form_for :face, url(:photo, :update, :id => @face.id), :class => 'form-horizontal' do |f|
+  =partial 'photo/form', :locals => { :f => f }

@@ -1,0 +1,17 @@
+-# coding: utf-8
+- error = @face.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '姓名', :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'input-xlarge input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : '给取个名字呗'
+- error = @face.errors.include?(:hint)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label '显示信息', :class => 'control-label'
+  .controls
+    =f.text_field :hint, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:hint, :class => 'text-error') : '附加到图片上的信息,14个字以内'
+.form-actions
+  =f.submit '保存', :class => 'btn btn-primary'
+  &nbsp;
+  =link_to '取消', url(:photo, :index), :class => 'btn'
