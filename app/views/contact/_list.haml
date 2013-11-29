@@ -1,44 +1,46 @@
 -# coding: utf-8
+-# = stylesheet_link_tag "contacts"
 .row
   .span4.offset4
     %span{:class => "label label-info"}
       = "计算机993班级共49人，已有#{@items.count}位同学加入通讯录"
-%table{:class => "table table-hover"}
+%table.span12{:class => "table table-hover"}
   %thead
     %tr
-      %th姓名
-      %th电话
-      %th工作单位
-      %th城市
-      %th地址
-      %th邮编
-      %th QQ
-      %th eMail
-      %th微信
-      %th微博
+      %th{:style => "width: 10%"} 姓名
+      %th{:style => "width: 8%"} 电话
+      %th{:style => "width: 15%"} 工作单位
+      %th{:style => "width: 8%"} 城市
+      %th{:style => "width: 20%"} 地址
+      %th{:style => "width: 8%"} 邮编
+      %th{:style => "width: 8%"} QQ
+      %th{:style => "width: 5%"} eMail
+      %th{:style => "width: 5%"} 微信
+      %th{:style => "width: 5%"} 微博
+      %th{:style => "width: 8%"} 操作
   %tbody
     - if @items
       - @items.each do |item|
         %tr
-          %td.span1
+          %td
             = item.name
-          %td.span1 
+          %td
             = item.phone
-          %td.span1
+          %td
             = item.company
-          %td.span1
+          %td
             = item.city
-          %td.span2
+          %td
             = item.address
-          %td.span1
+          %td
             = item.post
-          %td.span1
+          %td
             = item.qq
-          %td.span1
+          %td
             = item.email
-          %td.span1
+          %td
             = item.weixin
-          %td.span1
+          %td
             = item.weibo
           - if current_account.name == item.name
             %td.span1
