@@ -24,7 +24,7 @@ Cs993::App.controllers :photo do
   
   layout :front
 
-  get :index do
+  get :index, :map => '/photo/index' do
     @section = 'photo'
     @items = Face.order('rate_up DESC')
     render "photo/index"
@@ -87,12 +87,14 @@ Cs993::App.controllers :photo do
 
   post :upwall do
     @selected_faces = params[:selected_faces]
+    puts "@selected_faces : #{@selected_faces}"
     if @selected_faces
       @selected_faces.each do |item|
-        face = Face.find_or_create_by_file_name(item)
-        face.editor = current_account.name
-        face.origin_file_name = 
+        Face.find_or_create_by_file_name(item) do |face|
+          face.editor = current_account.name
+          face.origin_file_name = session[:origin_file_name]
           face.save
+        end
       end
       session[:faces] = nil
       session[:origin_file_name] = nil

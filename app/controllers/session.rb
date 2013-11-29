@@ -33,8 +33,8 @@ Cs993::App.controllers :session do
     puts "login params: #{params}"
     if account = Account.authenticate(params[:name],  params[:password])
       set_current_account(account)
-      #redirect_back_or_default('/')
-      redirect '/'
+      redirect_back_or_default('/')
+      #redirect '/'
     else
       params[:name], params[:password] = h(params[:name]), h(params[:password])
       flash[:error] = pat('login.error')

@@ -4,14 +4,24 @@
       = image_tag(image_path(File.join("faces", item.file_name)))
       - unless item.name.nil? && item.hint.nil? && (item.editor != current_account.name)
         .caption
-          %h3
-            = item.name
-          %p 
-            = item.hint
           - if (item.editor == current_account.name)
             %p 
               = link_to '编辑', url(:photo, :edit, :id => item.id), :class => 'btn'
-= link_to '我要上传', url(:photo, :upload), :class => 'btn btn-primary pull-right'
+          %h5
+            = item.name
+          %p 
+            = item.hint
+
+.row
+  .spn4.offset4
+    - if logged_in? && (current_account.role == 'visitor')
+      %span.label.label-important 提交图片，请先登入正式用户
+      - session[:return_to] = '/photo/index'
+      %a.btn.btn-primary{:href => '/session/login'} 登入
+      %a.btn{:href => '/register'} 注册
+    - if logged_in? && (current_account.role == 'user')
+      = link_to '我要上传', url(:photo, :upload), :class => 'btn btn-primary pull-right'      
+
 = stylesheet_link_tag "masonry_wall"
 = javascript_include_tag "masonry.pkgd.min"
 

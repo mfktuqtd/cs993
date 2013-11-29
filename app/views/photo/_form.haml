@@ -10,7 +10,7 @@
   =f.label '显示信息', :class => 'control-label'
   .controls
     =f.text_field :hint, :class => 'input-xlarge input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:hint, :class => 'text-error') : '附加到图片上的信息,14个字以内'
+    %span.help-inline=error ? f.error_message_on(:hint, :class => 'text-error') : '附加到图片上的信息,图片太小有可能显示不下'
 .form-actions
   =f.submit '保存', :class => 'btn btn-primary'
   &nbsp;

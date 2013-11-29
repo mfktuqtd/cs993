@@ -69,6 +69,8 @@ module Cs993
 
     access_control.roles_for :any do |role|
       role.protect '/contact'
+      role.protect '/photo'
+      role.protect '/register'
       role.allow '/session'
     end
 
@@ -79,6 +81,12 @@ module Cs993
     access_control.roles_for :visitor do |role|
       role.protect '/contact/edit'
       role.allow  '/contact/index'
+      role.allow '/photo/index'
+      role.protect '/photo/upload'
+      role.protect '/photo/create'
+      role.protect '/photo/upwall'
+      role.protect '/photo/edit'
+      role.protect '/photo/update'
     end
 
     access_control.roles_for :user do |role|
@@ -87,6 +95,12 @@ module Cs993
       role.allow '/contact/create'
       role.allow '/contact/edit'
       role.allow '/contact/update'
+      role.allow '/photo/index'
+      role.allow '/photo/upload'
+      role.allow '/photo/create'
+      role.allow '/photo/upwall'
+      role.allow '/photo/edit'
+      role.allow '/photo/update'
     end
 
     get '/' do

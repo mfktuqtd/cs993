@@ -3,8 +3,10 @@
 .row
   .spn4.offset4
     - if logged_in? && (current_account.role == 'visitor')
-      %span.label.label-important 提交个人信息，请先注册成为正式用户
-      %a{:href => '/register'} 注册
+      %span.label.label-important 提交个人信息，请先登入正式用户
+      - session[:return_to] = '/contact/index'
+      %a.btn.btn-primary{:href => '/session/login'} 登入
+      %a.btn{:href => '/register'} 注册
     - if logged_in? && (current_account.role == 'user')
       %a.btn{:href => '/contact/new'}新建
       = link_to '导出Excel', url(:contact, :download, :format => :xls)
