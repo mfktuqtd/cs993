@@ -26,7 +26,7 @@ Cs993::App.controllers :photo do
 
   get :index, :map => '/photo/index' do
     @section = 'photo'
-    @items = Face.order('rate_up DESC')
+    @items = Face.order('RAND()')
     render "photo/index"
   end
 
@@ -119,4 +119,9 @@ Cs993::App.controllers :photo do
     end
   end
 
+  get :delete do
+    @face = Face.find(params[:id])
+    Face.destroy(params[:id]) if @face
+    redirect url(:photo, :index)
+  end
 end

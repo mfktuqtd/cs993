@@ -55,9 +55,9 @@ Cs993::App.controllers :contact do
   end
 
   get :delete do
-    Contact.destroy(params[:id])
-    @items = Contact.all
-    render 'contact/index'
+    @contact = Contact.find(params[:id])
+    Contact.destroy(params[:id]) if @contact
+    redirect url(:contact, :index)
   end
 
   post :update do

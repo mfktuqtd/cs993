@@ -1,4 +1,6 @@
 - if @face
-  = image_tag(image_path(File.join("faces", @face.file_name)))
+  = image_tag(image_path(File.join("thumbnails", @face.origin_file_name)), :class => 'thumbnail')
+  = image_tag(image_path(File.join("faces", @face.file_name)), :class => 'thumbnail')
+  = link_to "从照片墙中删除", url(:photo, :delete, :id => @face.id, :format => :js), :class => 'btn', :confirm => "确认删除?"
 -form_for :face, url(:photo, :update, :id => @face.id), :class => 'form-horizontal' do |f|
   =partial 'photo/form', :locals => { :f => f }
