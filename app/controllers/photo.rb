@@ -37,7 +37,7 @@ Cs993::App.controllers :photo do
   end
 
 
-  data = '/Users/kepeng/workfolder/demo/opencv-2.4.6.1/data/haarcascades/haarcascade_frontalface_alt.xml'
+  data = '/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml'
   detector = CvHaarClassifierCascade::load(data)
   width_fit = 1024
   height_fit = 768
