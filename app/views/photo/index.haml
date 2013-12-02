@@ -1,17 +1,17 @@
 #photowall.thumbnails
   - @items.each do |item|
     .item.thumbnail
-      = image_tag(image_path(File.join("faces", item.file_name)))
+      %a{:href => image_path(File.join("photos", item.origin_file_name)), "data-lightbox" => ""}
+        = image_tag(image_path(File.join("faces", item.file_name)))
       - unless item.name.nil? && item.hint.nil? && (item.editor != current_account.name)
         .caption
-          - if (item.editor == current_account.name)
-            %p 
-              = link_to '编辑', url(:photo, :edit, :id => item.id), :class => 'btn'
-          %h5
+          %h3
             = item.name
           %p 
             = item.hint
-
+          - if (item.editor == current_account.name)
+            %p 
+              = link_to '编辑', url(:photo, :edit, :id => item.id), :class => 'btn'
 .row
   .spn4.offset4
     - if logged_in? && (current_account.role == 'visitor')
@@ -20,31 +20,19 @@
       %a.btn.btn-primary{:href => '/session/login'} 登入
       %a.btn{:href => '/register'} 注册
     - if logged_in? && (current_account.role == 'user')
-      = link_to '我要上传', url(:photo, :upload), :class => 'btn btn-primary pull-right'      
-
-= stylesheet_link_tag "masonry_wall"
-= javascript_include_tag "masonry.pkgd.min"
-
+      = link_to '我要上传', url(:photo, :upload), :class => 'btn btn-primary pull-right'
+= stylesheet_link_tag "jquery.simple.lightbox"
+= javascript_include_tag "imagesloaded.pkgd.min", "masonry.pkgd.min", "jquery.bootstrap.simple.lightbox"
 :javascript
   $(window).load(function() {
-    $('#photowall').masonry({
-     columnWidth: 90,
-     itemSelector: '.item'
-    }).imagesLoaded(function() {
-     $('#photowall').masonry('reload');
+    $('#photowall').imagesLoaded(function(){  
+      $('#photowall').masonry({
+        columnWidth: 90,
+        itemSelector: '.item'
+      });
     });
   });
-  $(document).ready(function(){
-    $("[rel='tooltip']").tooltip();	
-    $('#photowall .thumbnail').hover(
-      function(){
-        $(this).find('.caption').slideDown(250); //.fadeIn(250)
-      },
-      function(){
-        $(this).find('.caption').slideUp(250); //.fadeOut(205)
-      }
-    ); 
-  });
-
+  $('[data-lightbox]').simpleLightbox();
+  
 
 
